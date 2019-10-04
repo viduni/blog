@@ -11,10 +11,16 @@
 |
 */
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostsController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', HomeController::class . '@index')->name('home');
+Route::get('/posts/create', PostsController::class . '@create')
+    ->name('posts.create')
+;
