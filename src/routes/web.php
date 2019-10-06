@@ -13,14 +13,22 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::namespace('App\Http\Controllers')
+    ->group(function(){
+        Auth::routes();
+    })
+;
 
 Route::get('/home', HomeController::class . '@index')->name('home');
 Route::get('/posts/create', PostsController::class . '@create')
     ->name('posts.create')
+;
+Route::post('/posts/store', PostsController::class . '@store')
+    ->name('posts.store')
 ;
