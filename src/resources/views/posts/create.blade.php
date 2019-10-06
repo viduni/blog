@@ -15,8 +15,7 @@
                             <input type="text" class="form-control" name="title"/>
                         </div>
                         <div class="form-group">    
-                            <label for="content">Content:</label>
-                            <input type="text" class="form-control" name="content"/>
+                            <textarea rows="4" cols="50" class="form-control" name="content">Enter the content</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary-outline">Add Post</button>
                     </form>
