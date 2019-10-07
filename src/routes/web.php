@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,24 @@ Route::get('/posts/{id}', PostsController::class . '@edit')
 
 Route::patch('/posts/{id}', PostsController::class . '@update')
     ->name('posts.update')
+;
+
+Route::get('/categories/create',CategoriesController::class . '@create')
+    ->name('categories.create')
+;
+
+Route::post('/categories/store',CategoriesController::class . '@store')
+    ->name('categories.store')
+;
+
+Route::get('/categories', CategoriesController::class . '@index')
+    ->name('categories.index')
+;
+
+Route::get('/categories/{id}', CategoriesController::class . '@edit')
+    ->name('categories.edit')
+;
+
+Route::patch('/categories/{id}', CategoriesController::class . '@update')
+    ->name('categories.update')
 ;
