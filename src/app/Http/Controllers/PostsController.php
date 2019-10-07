@@ -35,4 +35,28 @@ class PostsController extends Controller
         return redirect('posts.index')->with('success','Save Post!');
     }
 
+    public function edit(int $id){
+
+        $post = Post::find($id);
+
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'title'=>'required',
+            'content'=>'required'
+        ]);
+
+        $post = Post::find($id);
+        $post->title=$request->get('title');
+        $post->content=$request->get('content');
+        $post->save();
+
+        return redirect()
+            ->route('posts.index')
+            ->with('success', 'Post updated!')
+        ;
+    }
+
 }

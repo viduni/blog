@@ -36,3 +36,11 @@ Route::post('/posts/store', PostsController::class . '@store')
 Route::get('/posts', PostsController::class . '@index')
     ->name('posts.index')
 ;
+
+Route::get('/posts/{id}', PostsController::class . '@edit')
+    ->name('posts.edit')
+;
+
+Route::patch('/posts/{id}', PostsController::class . '@update')
+    ->name('posts.update')
+;

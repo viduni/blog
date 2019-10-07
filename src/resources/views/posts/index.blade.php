@@ -24,7 +24,7 @@
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->content }}</td>
                                     <td>
-                                        //TODO: Add action buttons.
+                                        <a href= "{{route('posts.edit',$post->id)}}" class="btn btn-primary">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
