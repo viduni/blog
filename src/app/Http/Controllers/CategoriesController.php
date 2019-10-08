@@ -16,11 +16,22 @@ class CategoriesController extends Controller
     }
 
     public function create(){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
 
         return view('categories.create');
     }
 
     public function store(Request $request){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
+
         $request->validate([
             'name'=>'required',
             'label'=>'required'
@@ -40,6 +51,12 @@ class CategoriesController extends Controller
     }
 
     public function edit(int $id){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
+
         $category = Category::find($id);
 
         return view('categories.edit', compact('category'));
@@ -47,6 +64,12 @@ class CategoriesController extends Controller
     }
 
     public function update(Request $request, $id){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
+
         $request->validate([
             'name'=>'required',
             'label'=>'required'

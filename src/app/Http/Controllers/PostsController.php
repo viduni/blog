@@ -17,10 +17,22 @@ class PostsController extends Controller
     }
 
     public function create(){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
+        
         return view('posts.create');
     }
 
     public function store(Request $request){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
+
         $request->validate([
             'title'=>'required',
             'content'=>'required'
@@ -39,6 +51,11 @@ class PostsController extends Controller
     }
 
     public function edit(int $id){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
 
         $post = Post::find($id);
         $categories = Category::all();
@@ -50,6 +67,12 @@ class PostsController extends Controller
     }
 
     public function update(Request $request, $id){
+        if(is_null(auth()->user())){
+            return redirect()
+                ->route('login')
+            ;
+        }
+
         $request->validate([
             'title'=>'required',
             'content'=>'required'
