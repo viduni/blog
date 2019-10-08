@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::namespace('App\Http\Controllers')
-    ->group(function(){
+    ->group(function () {
         Auth::routes();
     })
 ;
@@ -47,11 +47,11 @@ Route::patch('/posts/{id}', PostsController::class . '@update')
     ->name('posts.update')
 ;
 
-Route::get('/categories/create',CategoriesController::class . '@create')
+Route::get('/categories/create', CategoriesController::class . '@create')
     ->name('categories.create')
 ;
 
-Route::post('/categories/store',CategoriesController::class . '@store')
+Route::post('/categories/store', CategoriesController::class . '@store')
     ->name('categories.store')
 ;
 

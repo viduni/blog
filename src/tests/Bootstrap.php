@@ -21,6 +21,11 @@ class Bootstrap implements BeforeFirstTestHook, AfterLastTestHook
 
     use CreatesApplication;
 
+    public function executeAfterLastTest(): void
+    {
+        array_map('unlink', glob('bootstrap/cache/*.phpunit.php'));
+    }
+
     public function executeBeforeFirstTest(): void
     {
         $console = $this->createApplication()->make(Kernel::class);
@@ -33,10 +38,5 @@ class Bootstrap implements BeforeFirstTestHook, AfterLastTestHook
         foreach ($commands as $command) {
             $console->call($command);
         }
-    }
-
-    public function executeAfterLastTest(): void
-    {
-        array_map('unlink', glob('bootstrap/cache/*.phpunit.php'));
     }
 }

@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <h2>{{ $post->title }}</h2>
-                    <div>{{ $post->content }}</div>      
+                    <div>{!! $post->content !!}</div>      
                 </div>
             </div>
         </div>

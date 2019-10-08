@@ -6,12 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCategoryPostTable extends Migration
 {
+    public function down()
+    {
+        Schema::dropIfExists('category_post');
+    }
+
     public function up()
     {
         Schema::create('category_post', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('post_id')->unsigned();            
+            $table->bigInteger('post_id')->unsigned();
             $table->timestamps();
 
             $table
@@ -30,10 +35,5 @@ class CreateCategoryPostTable extends Migration
                 ->onUpdate('cascade')
             ;
         });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('category_post');
     }
 }
