@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -32,14 +33,20 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect('posts.index')->with('success','Save Post!');
+        return redirect()
+            ->route('posts.index')
+        ;
     }
 
     public function edit(int $id){
 
         $post = Post::find($id);
+        $categories = Category::all();
 
-        return view('posts.edit', compact('post'));
+        return view('posts.edit', compact([
+            'post',
+            'categories',
+        ]));
     }
 
     public function update(Request $request, $id){
@@ -53,8 +60,13 @@ class PostsController extends Controller
         $post->content=$request->get('content');
         $post->save();
 
+        $post
+            ->categories()
+            ->sync($request->get('categories'))
+        ;
+
         return redirect()
-            ->route('posts.index')
+            ->route('posts.edit', [ $id ])
             ->with('success', 'Post updated!')
         ;
     }

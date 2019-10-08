@@ -10,4 +10,9 @@ class Category extends Model
         'name',
         'label'     
     ];
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }
