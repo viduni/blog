@@ -70,3 +70,6 @@ Route::patch('/categories/{id}', CategoriesController::class . '@update')
 Route::get('/read', ReadController::class . '@index')
     ->name('read.index')
 ;
+Route::get('/read/{postId}', ReadController::class . '@single')
+    ->name('read.single')
+;

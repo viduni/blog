@@ -14,4 +14,12 @@ class ReadController extends Controller
             'posts',
         ]));
     }
+
+    public function single($postId){
+        $post = Post::find($postId);
+
+        return view('read.single', compact([
+            'post',
+        ]));
+    }
 }
