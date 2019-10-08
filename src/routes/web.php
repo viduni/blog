@@ -14,6 +14,7 @@
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ReadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -64,4 +65,8 @@ Route::get('/categories/{id}', CategoriesController::class . '@edit')
 
 Route::patch('/categories/{id}', CategoriesController::class . '@update')
     ->name('categories.update')
+;
+
+Route::get('/read', ReadController::class . '@index')
+    ->name('read.index')
 ;
