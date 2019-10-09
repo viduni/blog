@@ -10,6 +10,16 @@
                 <div class="card-body">
                     <h2>{{ $post->title }}</h2>
                     <div>{!! $post->content !!}</div>      
+                </div><br>
+                <div class="card-body">
+                    <h3>Comments</h3>
+                    <form method="post" action="{{route('comments.store')}}">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" name="name" />
+                        <label>Comment:</label>
+                        <input type="text" class="form-control" name="comment" /><br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ReadController;
@@ -70,6 +71,11 @@ Route::patch('/categories/{id}', CategoriesController::class . '@update')
 Route::get('/read', ReadController::class . '@index')
     ->name('read.index')
 ;
+
 Route::get('/read/{postId}', ReadController::class . '@single')
     ->name('read.single')
+;
+
+Route::get('/comments/create', CommentsController::class . '@create')
+    ->name('comments.create')
 ;
