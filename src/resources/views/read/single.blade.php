@@ -14,6 +14,8 @@
                 <div class="card-body">
                     <h3>Comments</h3>
                     <form method="post" action="{{route('comments.store')}}">
+                    @csrf
+                        <input type="hidden"  name="postId" value="{{$postId->post_id}}">
                         <label>Name:</label>
                         <input type="text" class="form-control" name="name" />
                         <label>Comment:</label>

@@ -76,6 +76,6 @@ Route::get('/read/{postId}', ReadController::class . '@single')
     ->name('read.single')
 ;
 
-Route::get('/comments/create', CommentsController::class . '@create')
-    ->name('comments.create')
+Route::post('/comments/store', CommentsController::class . '@store')
+    ->name('comments.store')
 ;
