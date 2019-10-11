@@ -8,25 +8,22 @@ use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request, $postId){
+    public function store(Request $request){
         $request->validate([
             'name' => 'required',
-            'comment' => 'required',
+            'text' => 'required',
         ]);
 
-        $comment = new Comment([
-            'name' => $request->get('name'),
-            'comment' => $request->get('comment'),
-        ]);
+        $comment = new Comment();
+
+        $comment->name = $request->name;
+        $comment->text = $request->text;
+        $comment->post_id = $request->post_id;
 
         $comment->save();
 
-        $post = Post::find($postId);
-
         return redirect()
-            ->route('read.single', compact([
-                'post',
-            ]))
+            ->route('read.single', [ $request->post_id ])
         ;
     }
 }

@@ -15,11 +15,11 @@
                     <h3>Comments</h3>
                     <form method="post" action="{{route('comments.store')}}">
                     @csrf
-                        <input type="hidden"  name="postId" value="{{$postId->post_id}}">
+                        <input type="hidden"  name="post_id" value="{{$post->id}}">
                         <label>Name:</label>
                         <input type="text" class="form-control" name="name" />
                         <label>Comment:</label>
-                        <input type="text" class="form-control" name="comment" /><br>
+                        <input type="text" class="form-control" name="text" /><br>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
